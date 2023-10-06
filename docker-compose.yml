@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0.31
+    container_name: mysql
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: noteapp
+        MYSQL_USER: appuser
+        MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+    command: rails s -b 0.0.0.0
+
+volumes:
+  dbdata:
