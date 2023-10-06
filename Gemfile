@@ -67,3 +67,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "mysql2"
+
+gem 'rails_admin', '~> 3.0'
+gem "sassc-rails"
