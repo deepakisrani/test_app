@@ -22,9 +22,11 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
+      - bundler_gems:/usr/local/bundle/
     depends_on:
       - db
-    command: rails s -b 0.0.0.0
+    command: bash -c "bundle install && rails s -b 0.0.0.0"
 
 volumes:
   dbdata:
+  bundler_gems:

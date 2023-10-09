@@ -23,5 +23,9 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    Zeitwerk::Loader.eager_load_all
+    config.autoload_paths << "#{Rails.root}/models/concerns"
+    config.eager_load_paths << "#{Rails.root}/models/concerns"
   end
 end
